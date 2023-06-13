@@ -40,7 +40,7 @@ public class MainController {
 		User usuarioRegistrado = userService.registerUser(usuario, resultado);
 		viewModel.addAttribute("login", new LoginUser());
 		if(usuarioRegistrado != null) {
-			viewModel.addAttribute("succesRegister", "Gracias por registrarte, por favor login"); 	
+			viewModel.addAttribute("succesRegister", "Registrado, por favor login"); 	
 		}
 		return "logreg.jsp";
 	}
@@ -57,7 +57,6 @@ public class MainController {
 				loginuser.getPassword(), resultado)) {
 			User usuarioLog = userService.findByEmail(loginuser.getEmail());
 			sesion.setAttribute("userID",  usuarioLog.getId());
-//			System.out.println(sesion.getAttribute("userID") + "atributo ");
 			return "redirect:/dashboard";
 			
 		}else {
